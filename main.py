@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Spyder Editor
-
-This is a temporary script file.
+Data Transformation Tool v0.2 alpha
+Written by Karl De Ruyck (karlderuyck@pm.me) for Children's Health Ireland at Temple St (ray.ball.cuh.ie).
 """
 
 
