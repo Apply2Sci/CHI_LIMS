@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Data Transformation Tool v0.2 alpha
+Spyder Editor
 
-Written by Karl De Ruyck (karlderuyck@pm.me) for Children's Health Ireland at Temple St (ray.ball.cuh.ie).
+This is a temporary script file.
 """
 
 
@@ -17,10 +17,9 @@ from openpyxl.styles import Alignment, Font
 from statistics import mean, stdev
 from click import confirm
 
-
 # introduce scope
 
-print("\n~-~-~       Scripted Data Packer V.0.2       ~-~-~\n¦:   Intended for use by CHI, Temple St.   :¦\n~-~              ----------------              ~-~\n\n")
+print(datetime.now().time(),"\n~-~-~       Scripted Data Packer V.0.1       ~-~-~\n¦:   Intended for use at CHI, Temple St.   :¦\n~-~              ----------------              ~-~\n\n")
 baseDir = input("Please input SOURCE directory:\n(ENTER for default: c:\Users\Desktop)\n\n")
 
 
@@ -36,8 +35,8 @@ for files in os.walk(baseDir):
 print('Found %s input files in directory:' % len(infileList), sep = '')
 print("\n".join(infileList))
 
-print('Please confirm all these input files will be converted to CSV.\n')
-if confirm("\nPress ESCAPE to abort, any other key to continue."):
+print('\n')
+if confirm("\nPlease confirm ALL these input files will be converted to CSV."):
     continue
 else:
     raise SystemExit()
