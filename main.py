@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Spyder Editor
+Data Transformation Tool v0.2 alpha
 
-This is a temporary script file.
+Written by Karl De Ruyck (karlderuyck@pm.me) for Children's Health Ireland at Temple St (ray.ball.cuh.ie).
 """
 
 
@@ -17,9 +17,10 @@ from openpyxl.styles import Alignment, Font
 from statistics import mean, stdev
 from click import confirm
 
+
 # introduce scope
 
-print("\n~-~-~       Scripted Data Packer V.0.1       ~-~-~\n¦:   Intended for use at CHI, Temple St.   :¦\n~-~              ----------------              ~-~\n\n")
+print("\n~-~-~       Scripted Data Packer V.0.2       ~-~-~\n¦:   Intended for use by CHI, Temple St.   :¦\n~-~              ----------------              ~-~\n\n")
 baseDir = input("Please input SOURCE directory:\n(ENTER for default: c:\Users\Desktop)\n\n")
 
 
