@@ -19,23 +19,14 @@ from click import confirm
 
 step = 1
 print("\n",datetime.now().time(),"Step #%s: Program start." % step, sep = "\n")
-step+=1
 
 print("\n~-~-~     Scripted Data Packer V.0.1     ~-~-~\n¦:    Intended for use by CHI, Temple St.   :¦\n~-~            ----------------            ~-~\n\n")
-
-baseDirDate = input("Please type in the MET project date (YYMMDD) of the directory containing\nNeoLynx exported datafiles desired to be processed.\nSuch datafiles must be named\nbeginning with eReport and having a .txt extension.")
-print("Thank you.")
-
-
-# map working directory
-
-baseDirYear = 
 
 
 # define functions
 
-print("\n",datetime.now().time(),"Step #%s: Initializing..." % step, sep = "\n")
 step+=1
+print("\n",datetime.now().time(),"Step #%s: Initializing..." % step, sep = "\n")
 
 def LIMS(inData,item):
     
@@ -60,17 +51,34 @@ def LIMS(inData,item):
     return        
     
 
+# map working directory
+
+step+=1
+print("\n",datetime.now().time(),"Step #%s: Identifying SOURCE directory." % step, sep = "\n")
+
+while True:
+    try:
+        baseDirDate = int(input("Please type in the MET project date (YYMMDD) of the directory containing\nNeoLynx exported datafiles to be processed.\nSuch datafiles must be named beginning\nwith eReport and having a .txt extension."))
+    except badInput:
+        print("Non-numeric input is not valid. To quit, just click the red X up top-right.")
+        continue
+    else:
+        print("Thank you.")
+        baseDir = "D:\\Metabolic Projects\\20" + str(baseDirDate)[0:1] + "\\MET" + str(baseDirDate) + ".PRO"
+        if os.path.isdir(baseDir):
+            os.chdir(baseDir)
+            print("\n",datetime.now().time(),"\nThe working directory is:\n", os.getcwd(), sep = "\n")
+            break
+        else:
+            print("\n",datetime.now().time(),"\nNo directory was found at this path\n", baseDir, sep = "\n")
+            continue
+    
+
+    
 # search for input files
 
-print("\n",datetime.now().time(),"Step #%s: Searching directory." % step, sep = "\n")
 step+=1
-
-if baseDir == '':
-#    baseDir = str("C:\\Users\\Desktop\\LIMS") # FINAL
-    baseDir = str("/home/kdr/Documents/Ray/CUH_interface_1") # DEVELOPMENT
-os.chdir(baseDir)
-print("\n",datetime.now().time(),"\nThe working directory is:\n", os.getcwd(), sep = "\n")
-
+print("\n",datetime.now().time(),"Step #%s: Searching directory." % step, sep = "\n")
 
 infileList = []
 
@@ -88,8 +96,8 @@ print("\n".join(infileList))
 
 # confirm input files
 
-print("\n",datetime.now().time(),"Step #%s: File read check." % step, sep = "\n")
 step+=1
+print("\n",datetime.now().time(),"Step #%s: File read check." % step, sep = "\n")
 
 if confirm("\nPlease confirm ALL these input files will be converted to CSV:"):
     print("Thank you.")
@@ -100,8 +108,8 @@ else:
 
 # check for existing output files
 
-print("\n",datetime.now().time(),"Step #%s: Output file check." % step, sep = "\n")
 step+=1
+print("\n",datetime.now().time(),"Step #%s: Output file check." % step, sep = "\n")
 
 outfileList = []
 filedateList = []
@@ -134,15 +142,15 @@ else:
 
 # call LIMS formatting function
 
-print("\n",datetime.now().time(),"Step #%s: Processing input files..." % step, sep = "\n")
 step+=1
+print("\n",datetime.now().time(),"Step #%s: Processing input files..." % step, sep = "\n")
 
 for item in range(1,len(infileList)+1):
     inData = pd.read_csv(infileList[item-1], sep="\t", header=None)
     LIMS(inData,item)
 
 
-print("\n",datetime.now().time(),"Step #%s: All files processed." % step, sep = "\n")
 step+=1
+print("\n",datetime.now().time(),"Step #%s: All files processed." % step, sep = "\n")
 
 exit()
