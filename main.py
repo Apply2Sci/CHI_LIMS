@@ -59,7 +59,7 @@ print("\n",datetime.now().time(),"Step #%s: Identifying SOURCE directory." % ste
 while True:
     try:
         baseDirDate = int(input("Please type in the MET project date (YYMMDD) of the directory containing\nNeoLynx exported datafiles to be processed.\nSuch datafiles must be named beginning\nwith eReport and having a .txt extension."))
-    except badInput:
+    except ValueError:
         print("Non-numeric input is not valid. To quit, just click the red X up top-right.")
         continue
     else:
