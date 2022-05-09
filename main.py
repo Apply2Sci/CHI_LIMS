@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 """
+
 Data Interface for Ray Ball at CUH Temple St by Karl De Ruyck <karlderuyck@pm.me>
+Version 0.2 (alpha)
+
 """
 
 
@@ -11,7 +14,7 @@ import numpy as np
 import os
 import re
 from datetime import datetime
-from statistics import mean, stdev
+from statistics import mean#, stdev
 from click import confirm
 
 
@@ -20,7 +23,7 @@ from click import confirm
 step = 1
 print("\n",datetime.now().time(),"Step #%s: Program start." % step, sep = "\n")
 
-print("\n~-~-~     Scripted Data Packer V.0.1     ~-~-~\n¦:    Intended for use by CHI, Temple St.   :¦\n~-~            ----------------            ~-~\n\n")
+print("\n~-~-~         Scripted Data Packer  v. 0.2         ~-~-~\n¦:         Intended for use by CHI, Temple St.        :¦\n¦:           For support contact the author:          :¦\n¦: https://www.linkedin.com/in/karl-de-ruyck-3138991/ :¦\n~-~                 ----------------                 ~-~\n\n")
 
 
 # define functions
@@ -57,22 +60,17 @@ step+=1
 print("\n",datetime.now().time(),"Step #%s: Identifying SOURCE directory." % step, sep = "\n")
 
 while True:
-    try:
-        baseDirDate = int(input("Please type in the MET project date (YYMMDD) of the directory containing\nNeoLynx exported datafiles to be processed.\nSuch datafiles must be named beginning\nwith eReport and having a .txt extension."))
-    except ValueError:
-        print("Non-numeric input is not valid. To quit, just click the red X up top-right.")
-        continue
-    else:
+    baseDirDate = input("Please type in the MET project date of the\ndirectory containing NeoLynx exported\ndatafiles to be processed.\n\nSuch datafiles must be named beginning\nwith eReport and having a .txt extension.\n\n(yymmdd): ")
+    baseDir = "D:\\Metabolic Projects 20" + str(baseDirDate)[0:2] + "\\MET" + str(baseDirDate) + ".PRO"
+    if os.path.isdir(baseDir):
         print("Thank you.")
-        baseDir = "D:\\Metabolic Projects\\20" + str(baseDirDate)[0:1] + "\\MET" + str(baseDirDate) + ".PRO"
-        if os.path.isdir(baseDir):
-            os.chdir(baseDir)
-            print("\n",datetime.now().time(),"\nThe working directory is:\n", os.getcwd(), sep = "\n")
-            break
-        else:
-            print("\n",datetime.now().time(),"\nNo directory was found at this path\n", baseDir, sep = "\n")
-            continue
-    
+        os.chdir(baseDir)
+        print("\n",datetime.now().time(),"\nThe working directory is:\n", os.getcwd(), sep = "\n")
+        break
+    else:
+        print("\n",datetime.now().time(),"\nERROR\n\nNo directory was found at this path:\n", baseDir, sep = "\n")
+        continue
+
 
     
 # search for input files
