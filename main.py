@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Spyder Editor
-
-This is a temporary script file.
+Data Interface for Ray Ball at CUH Temple St by Karl De Ruyck <karlderuyck@pm.me>
 """
 
 
@@ -23,10 +21,15 @@ step = 1
 print("\n",datetime.now().time(),"Step #%s: Program start." % step, sep = "\n")
 step+=1
 
-print("\n~-~-~     Scripted Data Packer V.0.1     ~-~-~\n¦:    Intended for use at CHI, Temple St.   :¦\n~-~            ----------------            ~-~\n\n")
+print("\n~-~-~     Scripted Data Packer V.0.1     ~-~-~\n¦:    Intended for use by CHI, Temple St.   :¦\n~-~            ----------------            ~-~\n\n")
 
-baseDir = input("Please type in the SOURCE directory containing\nNeoLynx exported datafiles, named\nbeginning with eReport and having a .txt extension.\n(ENTER for default: C:\\Users\\Desktop\\LIMS)")
+baseDirDate = input("Please type in the MET project date (YYMMDD) of the directory containing\nNeoLynx exported datafiles desired to be processed.\nSuch datafiles must be named\nbeginning with eReport and having a .txt extension.")
 print("Thank you.")
+
+
+# map working directory
+
+baseDirYear = 
 
 
 # define functions
