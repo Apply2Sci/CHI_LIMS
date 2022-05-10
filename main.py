@@ -149,6 +149,31 @@ for item in range(1,len(infileList)+1):
 
 
 step+=1
-print("\n",datetime.now().time(),"Step #%s: All files processed." % step, sep = "\n")
+print("\n",datetime.now().time(),"Step #%s: All files processed locally." % step, sep = "\n")
 
+
+# copy to LIMS directory
+
+LIMSnet = "J:\\scriptoutput"
+if os.path.isdir(LIMSnet):
+    netPath = True
+else:
+    step+=1
+    print("\n",datetime.now().time(),"Step #%s: Network path not found.\nThis program will end now." % step, sep = "\n")
+
+while netPath:
+    step+=1
+    print("\n",datetime.now().time(),"Step #%s: The mapped network drive is J:\\scriptoutput" % step, sep = "\n")
+    if confirm("\nDo you want to write output to LIMS?"):
+        print("Thank you.")
+        try:
+            os.popen("copy *.csv j:\\scriptoutput")
+        except:
+            step+=1
+            print("\n",datetime.now().time(),"Step #%s: Network transfer to LIMS has FAILED.\nPlease copy local files manually." % step, sep = "\n")
+        else:
+            step+=1
+            print("\n",datetime.now().time(),"Step #%s: Write to LIMS was SUCCESSFUL!" % step, sep = "\n")
+
+print(datetime.now().time(),"\nThis program will end now.")
 exit()
